@@ -1,8 +1,8 @@
 class Project{
-    constructor(title,desciption){
+    constructor(title,description){
         this.id = crypto.randomUUID();
         this.title = title;
-        this.desciption = desciption;
+        this.description = description;
     }
 }
 

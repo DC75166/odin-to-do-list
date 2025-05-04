@@ -21,8 +21,8 @@ export class displayProject{
             const title = document.createElement('h3');
             title.textContent = project.title;
 
-            const desciption = document.createElement('p');
-            desciption.textContent = project.desciption;
+            const description = document.createElement('p');
+            description.textContent = project.description;
 
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-button');
