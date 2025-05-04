@@ -1,4 +1,5 @@
 import { handleRemoveProject } from './handleRemoveProject.js';
+import '../style.css';
 
 export class displayProject{
     constructor(containerSelector,manager){
@@ -24,6 +25,10 @@ export class displayProject{
             const description = document.createElement('p');
             description.textContent = project.description;
 
+            const openButton = document.createElement('button');
+            openButton.classList.add('open-button');
+            openButton.textContent = 'Open project';
+
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-button');
             deleteButton.textContent = 'Delete';
@@ -35,6 +40,7 @@ export class displayProject{
 
       card.appendChild(title);
       card.appendChild(description);
+      card.appendChild(openButton);
       card.appendChild(deleteButton);
 
       this.container.appendChild(card);
