@@ -1,7 +1,7 @@
 import { removeProject } from './ProjectActions.js';
 import '../style.css';
 
-export class displayProject{
+export class DisplayProject{
     constructor(containerSelector,manager){
        this.container = document.querySelector(containerSelector);
        this.manager = manager;

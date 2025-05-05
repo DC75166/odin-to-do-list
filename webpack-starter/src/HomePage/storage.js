@@ -7,7 +7,7 @@ export function saveToStorage(projectList){
 }
 
 export function getFromStorage(manager){
-    const savedProject = JSON.parse(localStorage.getItem('projects'))||[];
+    const savedProject = JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
     savedProject.forEach(projectData=>{
         const project = new Project(projectData.title,projectData.description,projectData.id);
         manager.add(project);
