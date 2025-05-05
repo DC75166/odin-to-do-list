@@ -1,4 +1,4 @@
-import { handleRemoveProject } from './ProjectActions.js';
+import { removeProject } from './ProjectActions.js';
 import '../style.css';
 
 export class displayProject{
@@ -35,7 +35,7 @@ export class displayProject{
 
             deleteButton.addEventListener('click', (e) => {
                 const projectId = e.target.closest('.project-card').dataset.id;
-                handleRemoveProject(projectId, this.manager, this);
+                removeProject(projectId, this.manager, this);
               });
 
       card.appendChild(title);
