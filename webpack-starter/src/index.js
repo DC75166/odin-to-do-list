@@ -1,6 +1,6 @@
 import './style.css';
 import { ProjectManager } from './HomePage/ProjectManager.js';
-import { addProject } from './HomePage/addProject.js';
+import { addProject } from './HomePage/ProjectActions.js';
 import { displayProject } from './HomePage/displayProject.js';
 
 

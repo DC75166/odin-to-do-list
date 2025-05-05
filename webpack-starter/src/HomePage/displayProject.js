@@ -1,4 +1,4 @@
-import { handleRemoveProject } from './handleRemoveProject.js';
+import { handleRemoveProject } from './ProjectActions.js';
 import '../style.css';
 
 export class displayProject{
