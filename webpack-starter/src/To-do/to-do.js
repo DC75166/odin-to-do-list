@@ -1,10 +1,10 @@
-class Todo{
-    constructor(title,description,priority,due_date,completed){
+export class Todo{
+    constructor(title,description,priority,dueDate){
         this.id = crypto.randomUUID();
         this.title = title;
         this.description = description;
         this.priority = priority;
-        this.due_date = due_date;
-        this.completed = completed;
+        this.dueDate = dueDate;
+        this.completed = false;
     }
 }

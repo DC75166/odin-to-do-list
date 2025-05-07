@@ -29,6 +29,11 @@ export class DisplayProject{
             openButton.classList.add('open-button');
             openButton.textContent = 'Open project';
 
+            openButton.addEventListener('click', (e) => {
+                const projectId = e.target.closest('.project-card').dataset.id;
+                const project = this.manager.list().find(p => p.id == projectId);
+              });
+
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-button');
             deleteButton.textContent = 'Delete';
