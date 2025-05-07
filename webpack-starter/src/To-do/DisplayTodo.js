@@ -35,7 +35,7 @@ export class DisplayTodo {
       const priority = document.querySelector("todo-priority");
       const dueDate = document.querySelector(".dueDate");
 
-      addTodo(title, description, priority, dueDate);
+      addTodo(this.project, title, description, priority, dueDate);
       this.render();
     });
 
