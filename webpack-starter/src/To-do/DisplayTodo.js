@@ -13,6 +13,7 @@ export class DisplayTodo {
   }
 
   cleanForm(){
+    document.querySelector(".newtodoForm").style.display = "none";
     this.formContainer.innerHTML = "";
   }
 
