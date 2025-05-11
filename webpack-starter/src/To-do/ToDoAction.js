@@ -11,4 +11,7 @@ export function DeleteToDo(project,todoId){
 
 export function ToggleToDo(project,todoId){
     const todo = project.todos.find(t => t.id == todoId);
+    if(todo){
+        todo.completed = !todo.completed;
+    }
 }
