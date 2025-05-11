@@ -2,54 +2,61 @@ import "../style.css";
 import { addTodo, DeleteToDo, ToggleToDo } from "./ToDoAction.js";
 
 export class DisplayTodo {
-  constructor(todoContainer, project) {
+  constructor(todoContainer, project, formContainer) {
     this.todoContainer = document.querySelector(todoContainer);
+    this.formContainer = formContainer ? document.querySelector(formContainer) : null;
     this.project = project;
   }
 
-  clean() {
+  cleanMain() {
     this.todoContainer.innerHTML = "";
   }
 
-  display() {
-    this.clean();
+  cleanForm(){
+    this.formContainer.innerHTML = "";
+  }
 
-    // ✅ Use this.project, not just project
-    const headline = document.createElement("h2");
-    headline.classList.add('todo-headline');
-    headline.textContent = `To Do's for ${this.project.title}`;
-    this.todoContainer.appendChild(headline); // Append headline ONCE
+  renderForm() {
+    this.cleanForm();
 
-    // ✅ Build and append the form
     const form = document.createElement("form");
-    form.classList.add('todo-form');
+    form.classList.add("todo-form");
     form.innerHTML = `
-      <input type="text" placeholder="Task Name" id="todo-title" class="todo-title" required />
-      <input type="text" placeholder="Description" id="todo-desc" class="todo-desc" required />
-      <select id="todo-priority" class="todo-priority">
+      <h3>Add Task to "${this.project.title}"</h3>
+      <input type="text" placeholder="Task Name" class="todo-title" required />
+      <input type="text" placeholder="Description" class="todo-desc" required />
+      <select class="todo-priority">
         <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
       </select>
-      <input type="date" id="todo-date" class="todo-date" required />
+      <input type="date" class="todo-date" required />
       <button type="submit" class="todo-submit">Add Task</button>
     `;
-    this.todoContainer.appendChild(form); // Append form ONCE
 
-    // ✅ Correct querySelector for priority dropdown
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      const title = document.querySelector(".todo-title").value.trim();
-      const description = document.querySelector(".todo-desc").value.trim();
-      const priority = document.querySelector(".todo-priority").value;
-      const dueDate = document.querySelector(".todo-date").value;
+      const title = form.querySelector(".todo-title").value.trim();
+      const description = form.querySelector(".todo-desc").value.trim();
+      const priority = form.querySelector(".todo-priority").value;
+      const dueDate = form.querySelector(".todo-date").value;
 
       if (!title || !description || !dueDate) return;
 
       addTodo(this.project, title, description, priority, dueDate);
-      this.display(); // Re-render updated to-do list
+      this.display(); // Refresh task list
+      this.renderForm(); // Clear form fields
     });
+
+    this.formContainer.appendChild(form);
+  }
+
+  display() {
+    this.cleanMain();
+
+    const headline = document.createElement("h2");
+    headline.textContent = `To Do's for "${this.project.title}"`;
+    this.todoContainer.appendChild(headline);
 
     // ✅ Render each todo
     this.project.todos.forEach((todo) => {
