@@ -1,5 +1,6 @@
 import { removeProject } from './ProjectActions.js';
 import '../style.css';
+import { DisplayTodo } from '../To-do/DisplayTodo.js';
 
 export class DisplayProject{
     constructor(containerSelector,manager){
@@ -32,6 +33,8 @@ export class DisplayProject{
             openButton.addEventListener('click', (e) => {
                 const projectId = e.target.closest('.project-card').dataset.id;
                 const project = this.manager.list().find(p => p.id == projectId);
+                const todoView = new DisplayTodo('.main', project);
+                todoView.display();
               });
 
             const deleteButton = document.createElement('button');

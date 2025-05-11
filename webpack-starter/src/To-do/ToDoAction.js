@@ -6,7 +6,7 @@ export function addTodo(project,title, description, priority, dueDate){
 }
 
 export function DeleteToDo(project,todoId){
-    const todo = project.todos.filter(t => t.id !== todoId);
+    project.todos = project.todos.filter(t => t.id !== todoId);
 }
 
 export function ToggleToDo(project,todoId){
