@@ -25,7 +25,7 @@ export class DisplayTodo {
     const form = document.createElement("form");
     form.classList.add("todo-form");
     form.innerHTML = `
-      <h3>Add Task to "${this.project.title}"</h3>
+      <h3>Add Task to ${this.project.title}</h3>
       <input type="text" placeholder="Task Name" class="todo-title" required />
       <input type="text" placeholder="Description" class="todo-desc" required />
       <select class="todo-priority">
@@ -46,7 +46,7 @@ export class DisplayTodo {
 
       if (!title || !description || !dueDate) return;
 
-      addTodo(this.project, title, description, priority, dueDate);
+      addTodo(this.manager, this.project, title, description, priority, dueDate);
       this.display(); // Refresh task list
       this.renderForm(); // Clear form fields
     });
@@ -70,7 +70,7 @@ export class DisplayTodo {
     })
 
     const headline = document.createElement("h2");
-    headline.textContent = `To Do's for "${this.project.title}"`;
+    headline.textContent = `To Do's for ${this.project.title}`;
     this.todoContainer.appendChild(headline);
 
     // ✅ Render each todo
@@ -86,11 +86,11 @@ export class DisplayTodo {
       `;
 
       div.querySelector(".checkbox").addEventListener("click", () => {
-        ToggleToDo(this.project, todo.id);
+        ToggleToDo(this.manager,this.project, todo.id);
       });
 
       div.querySelector(".delete").addEventListener("click", () => {
-        DeleteToDo(this.project, todo.id);
+        DeleteToDo(this.manager,this.project, todo.id);
         this.display(); // Re-render after deletion
       });
 
