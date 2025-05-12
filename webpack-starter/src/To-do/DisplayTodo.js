@@ -1,11 +1,13 @@
 import "../style.css";
 import { addTodo, DeleteToDo, ToggleToDo } from "./ToDoAction.js";
+import { DisplayProject } from "../HomePage/displayProject.js";
 
 export class DisplayTodo {
-  constructor(todoContainer, project, formContainer) {
+  constructor(todoContainer, project, formContainer, manager) {
     this.todoContainer = document.querySelector(todoContainer);
     this.formContainer = formContainer ? document.querySelector(formContainer) : null;
     this.project = project;
+    this.manager = manager;
   }
 
   cleanMain() {
@@ -54,6 +56,18 @@ export class DisplayTodo {
 
   display() {
     this.cleanMain();
+
+    const backButton = document.createElement('button');
+    backButton.textContent = "← Go Back";
+    this.todoContainer.appendChild(backButton);
+
+    backButton.addEventListener('click',()=>{
+      this.cleanMain();
+      this.cleanForm();
+      document.querySelector(".newtodoForm").style.display = "flex";
+        const displayProject = new DisplayProject('.main',this.manager);
+        displayProject.render(this.manager.list());
+    })
 
     const headline = document.createElement("h2");
     headline.textContent = `To Do's for "${this.project.title}"`;
