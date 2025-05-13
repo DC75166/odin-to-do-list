@@ -4,11 +4,13 @@ import { Todo } from "../To-do/to-do.js";
 const STORAGE_KEY = 'project';
 
 export function saveToStorage(projectList){
+    console.log("Saving to localStorage:", projectList);
     localStorage.setItem(STORAGE_KEY,JSON.stringify(projectList));
 }
 
 export function getFromStorage(manager) {
     const savedProject = JSON.parse(localStorage.getItem(STORAGE_KEY));
+     console.log("Loaded projects from storage:", savedProject);
 
     // Handle if it's an object instead of an array
     if (savedProject && Array.isArray(savedProject)) {

@@ -32,8 +32,11 @@ export class DisplayProject{
 
             openButton.addEventListener('click', (e) => {
                 const projectId = e.target.closest('.project-card').dataset.id;
+                localStorage.setItem('currentProjectId', projectId);
+
                 const project = this.manager.list().find(p => p.id == projectId);
                 const todoView = new DisplayTodo('.main', project , '.todoSidebar',this.manager);
+                
                 todoView.renderForm();
                 todoView.display();
               });

@@ -62,6 +62,7 @@ export class DisplayTodo {
     this.todoContainer.appendChild(backButton);
 
     backButton.addEventListener('click',()=>{
+       localStorage.removeItem('currentProjectId'); 
       this.cleanMain();
       this.cleanForm();
       document.querySelector(".newtodoForm").style.display = "flex";
