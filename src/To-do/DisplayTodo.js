@@ -71,13 +71,7 @@ export class DisplayTodo {
         displayProject.render(this.manager.list());
     })
 
-    // Next approach: Wrap the todo and button in a parent div and make all of it in column
-
-    // const headline = document.createElement("h2");
-    // headline.textContent = `To Do's for ${this.project.title}`;
-    // this.todoContainer.appendChild(headline);
-
-    // ✅ Render each todo
+    // Render each todo
     this.project.todos.forEach((todo) => {
       const div = document.createElement("div");
       div.classList.add("todo-item");
