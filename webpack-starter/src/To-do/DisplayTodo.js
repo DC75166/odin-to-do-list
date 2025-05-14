@@ -70,9 +70,11 @@ export class DisplayTodo {
         displayProject.render(this.manager.list());
     })
 
-    const headline = document.createElement("h2");
-    headline.textContent = `To Do's for ${this.project.title}`;
-    this.todoContainer.appendChild(headline);
+    // Next approach: Wrap the todo and button in a parent div and make all of it in column
+
+    // const headline = document.createElement("h2");
+    // headline.textContent = `To Do's for ${this.project.title}`;
+    // this.todoContainer.appendChild(headline);
 
     // ✅ Render each todo
     this.project.todos.forEach((todo) => {
@@ -80,15 +82,20 @@ export class DisplayTodo {
       div.classList.add("todo-item");
 
       div.innerHTML = `
+        <span class="headlines"><strong>${todo.title}</strong></span>
+        <span class="description">${todo.description}</span>
+        <span class="specifics">Due: ${todo.dueDate} </span>
+        <span class="priority">Priority: ${todo.priority}</span>
         <input class="checkbox" type="checkbox" ${todo.completed ? "checked" : ""} />
-        <span class="headlines"><strong>${todo.title}</strong>: ${todo.description}</span>
-        <span class="specifics">Due: ${todo.dueDate}, Priority: ${todo.priority}</span>
+        <button class="edit">Edit</button>
         <button class="delete">Delete</button>
       `;
 
       div.querySelector(".checkbox").addEventListener("click", () => {
         ToggleToDo(this.manager,this.project, todo.id);
       });
+      
+      
 
       div.querySelector(".delete").addEventListener("click", () => {
         DeleteToDo(this.manager,this.project, todo.id);
