@@ -19,3 +19,18 @@ export function ToggleToDo(manager,project,todoId){
     }
     saveToStorage(manager.list());
 }
+
+export function EditTodo(manager, project, todoId, updatedData) {
+    const todo = project.todos.find(t => t.id === todoId);
+
+    if (todo) {
+        // Update the todo with new data
+        todo.title = updatedData.title;
+        todo.description = updatedData.description;
+        todo.priority = updatedData.priority;
+        todo.dueDate = updatedData.dueDate;
+
+        // Save to storage after editing
+        saveToStorage(manager.list());
+    }
+}

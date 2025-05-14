@@ -1,6 +1,7 @@
 import "../style.css";
 import { addTodo, DeleteToDo, ToggleToDo } from "./ToDoAction.js";
 import { DisplayProject } from "../HomePage/displayProject.js";
+import { EditTodo } from "./EditTodo.js";
 
 export class DisplayTodo {
   constructor(todoContainer, project, formContainer, manager) {
@@ -95,7 +96,10 @@ export class DisplayTodo {
         ToggleToDo(this.manager,this.project, todo.id);
       });
       
-      
+      div.querySelector(".edit").addEventListener("click",()=>{
+          const editTodo = new EditTodo(this.manager, this.project, todo.id, this.todoContainer,this);
+                editTodo.openEditForm(); // Open the edit form
+            });
 
       div.querySelector(".delete").addEventListener("click", () => {
         DeleteToDo(this.manager,this.project, todo.id);

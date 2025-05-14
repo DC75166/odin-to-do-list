@@ -145,3 +145,19 @@ button:hover{
   overflow-wrap: break-word;
   white-space: normal;
 }
+
+.edit-modal{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: rgba(230,230,230,255);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  gap: .8rem;
+  box-sizing: border-box;
+}
+.edit-modal-content{
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
